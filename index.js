@@ -1,9 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
-import { engine, create } from "express-handlebars";
-import * as dotenv from "dotenv";
+import { create } from "express-handlebars";
 import flash from "connect-flash";
 import session from "express-session";
+import varMiddleware from "./middleware/var.js";
+import cookieParser from "cookie-parser";
+import * as dotenv from "dotenv";
 
 // Routes
 import AppRoutes from "./routes/appRoute.js";
@@ -23,13 +25,16 @@ app.set("views", "./views");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(flash());
+app.use(cookieParser());
+app.use(express.json());
+app.use(session({ secret: "Sammi", resave: false, saveUninitialized: false }));
+app.use(varMiddleware);
+
 app.use(AppRoutes);
 app.use(AuthRoutes);
-app.use(express.json());
-app.use(session({secret: "secret", resave: false, saveUninitialized: false}));
 // app.use(express.cookieParser("keyboard cat"));
 // app.use(express.session({ cookie: { maxAge: 60000 } }));
-app.use(flash());
 
 const startApp = () => {
   try {

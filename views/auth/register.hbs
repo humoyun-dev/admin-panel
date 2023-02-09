@@ -7,6 +7,18 @@
   <form class="w-50" action="/register" method="post">
     <h2><i class="bi fs-1 bi-fingerprint"></i> Register</h2>
     <hr />
+    {{#if registerError}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><i class="bi bi-exclamation-triangle"></i> Error</strong>
+        {{registerError}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {{/if}}
     <div class="d-flex justify-content-between gap-3">
       <div class="form-floating w-50 mb-3">
         <input

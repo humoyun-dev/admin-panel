@@ -5,11 +5,20 @@
     alt=""
   />
   <form class="w-50" action="/login" method="post">
-    {{#if loginError}}
-      <p>{{loginError}}</p>
-    {{/if}}
     <h2><i class="bi fs-1 bi-fingerprint"></i> Login</h2>
     <hr />
+    {{#if loginError}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><i class="bi bi-exclamation-triangle"></i> Error</strong>
+        {{loginError }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {{/if}}
     <div class="form-floating mb-3">
       <input
         type="email"
