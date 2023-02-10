@@ -3,10 +3,11 @@ import mongoose from "mongoose";
 import { create } from "express-handlebars";
 import flash from "connect-flash";
 import session from "express-session";
-import varMiddleware from "./middleware/var.js";
 import cookieParser from "cookie-parser";
 import * as dotenv from "dotenv";
 
+import varMiddleware from "./middleware/var.js";
+import userMiddleware from "./middleware/user.js";
 // Routes
 import AppRoutes from "./routes/appRoute.js";
 import AuthRoutes from "./routes/auth.js";
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(session({ secret: "Sammi", resave: false, saveUninitialized: false }));
 app.use(varMiddleware);
+app.use(userMiddleware);
 
 app.use(AppRoutes);
 app.use(AuthRoutes);

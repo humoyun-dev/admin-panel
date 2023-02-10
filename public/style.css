@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box !important;
   scroll-behavior: smooth !important;
-  transition: 1s ease !important;
+  transition: .4s ease !important;
 }
 
 @media (max-width: 1023px) {
@@ -16,4 +16,23 @@
   .sidebarTablet {
     display: none !important;
   }
+}
+
+.newsImage {
+  overflow: hidden;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.newsImage img {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  object-fit: fill;
+}
+
+.newsImage img:hover {
+  transform: scale(1.1);
+  transition: 1s ease;
 }
