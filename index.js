@@ -8,6 +8,8 @@ import * as dotenv from "dotenv";
 
 import varMiddleware from "./middleware/var.js";
 import userMiddleware from "./middleware/user.js";
+import utils from "./utils/index.js";
+
 // Routes
 import AppRoutes from "./routes/appRoute.js";
 import AuthRoutes from "./routes/auth.js";
@@ -18,6 +20,7 @@ const app = express();
 const hbs = create({
   defaultLayout: "main",
   extname: "hbs",
+  helpers: utils,
 });
 
 app.engine("hbs", hbs.engine);

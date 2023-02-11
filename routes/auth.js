@@ -100,4 +100,29 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+// Admin
+
+router.get("/admins", async (req, res) => {
+  const admin = await User.find().lean();
+
+  res.render("auth/admin", {
+    title: "Admin",
+    isAdmins: true,
+    admin: admin.reverse(),
+    adminError: req.flash("adminError"),
+  });
+});
+
+// settings
+
+router.get("/settings", async (req, res) => {
+  const user = await User.find().lean();
+  console.log(user);
+  res.render("auth/settings", {
+    title: "Settings",
+    isSettings: true,
+    settingsError: req.flash("settingsError"),
+  });
+});
+
 export default router;

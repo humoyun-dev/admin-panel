@@ -21,7 +21,7 @@ router.get("/about", auth, (req, res) => {
 
 // News
 router.get("/news", auth, async (req, res) => {
-  const news = await News.find().lean();
+  const news = await News.find().populate("user").lean();
 
   res.render("news/news", {
     title: "News",
